@@ -5,7 +5,7 @@ class Player < ApplicationRecord
 
   validates :name, presence: true
 
-  def self.top_players_by_performance(performance)
+  def self.top_players_by_performance_in_all_teams(performance)
     joins(:statistics)
       .group(:id)
       .order("MAX(statistics.#{performance}) DESC")
@@ -17,7 +17,6 @@ class Player < ApplicationRecord
   end
 
   def above_performance_threshold_in_last_five_matches?(performance, threshold)
-    last_5_matches = team.matches.order(date: :desc).limit(5)
-    statistics.where("#{performance} > ?", threshold).where(match: last_5_matches).exists?
+    statistics.where("#{performance} > ?", threshold).where(match: Match.last(5)).exists?
   end
 end
