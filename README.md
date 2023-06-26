@@ -1,24 +1,41 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Football Statistics
 
-Things you may want to cover:
+This project is a football statistics tracking application. It allows you to manage teams, players, matches, and their performance statistics.
 
-* Ruby version
+## Installation
 
-* System dependencies
+1. Clone the repository:
+   git clone https://github.com/vanushinvi/football-statistics.git
 
-* Configuration
+2. Change into the project directory:
+   cd football-statistics
 
-* Database creation
+3. Install the dependencies:
+   bundle install
 
-* Database initialization
+4. Set up the database:
+   rails db:create
+   rails db:migrate
 
-* How to run the test suite
+5. Run seeds
+   rails db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+6. Prepare test environment
+   rails db:migrate RAILS_ENV=test
 
-* Deployment instructions
+## Usage
 
-* ...
+The application provides the following features:
+
+- Create, edit, and delete teams.
+- Create, edit, and delete players associated with teams.
+- Create, edit, and delete matches between teams.
+- Track performance statistics for players in matches, such as goals, assists, pass accuracy, and distance covered.
+- View top players by specific performance metrics in a team or across all teams.
+
+## Testing
+
+To run the test suite, use the following command:
+rspec
