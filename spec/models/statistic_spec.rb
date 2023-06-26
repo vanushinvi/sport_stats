@@ -5,25 +5,33 @@ RSpec.describe(Statistic, type: :model) do
     example 'validates numericality of pass_accuracy' do
       statistic = build(:statistic, pass_accuracy: -1.0)
       refute statistic.valid?
-      expect(statistic.errors[:pass_accuracy]).to(include('must be greater than or equal to 0.0'))
+
+      expected_result = ['must be greater than or equal to 0.0']
+      assert_equal expected_result, statistic.errors[:pass_accuracy]
     end
 
     example 'validates numericality of distance_covered' do
       statistic = build(:statistic, distance_covered: -1)
       refute statistic.valid?
-      expect(statistic.errors[:distance_covered]).to(include('must be greater than or equal to 0'))
+
+      expected_result = ['must be greater than or equal to 0']
+      assert_equal expected_result, statistic.errors[:distance_covered]
     end
 
     example 'validates numericality of assists' do
       statistic = build(:statistic, assists: -1)
       refute statistic.valid?
-      expect(statistic.errors[:assists]).to(include('must be greater than or equal to 0'))
+
+      expected_result = ['must be greater than or equal to 0']
+      assert_equal expected_result, statistic.errors[:assists]
     end
 
     example 'validates numericality of goals' do
       statistic = build(:statistic, goals: -1)
       refute statistic.valid?
-      expect(statistic.errors[:goals]).to(include('must be greater than or equal to 0'))
+
+      expected_result = ['must be greater than or equal to 0']
+      assert_equal expected_result, statistic.errors[:goals]
     end
   end
 
@@ -36,7 +44,8 @@ RSpec.describe(Statistic, type: :model) do
         statistic1 = create(:statistic, match: match, player: player1)
         statistic2 = create(:statistic, match: match, player: player2)
 
-        expect(Statistic.match_stats(match)).to(include(statistic1, statistic2))
+        assert_includes Statistic.match_stats(match), statistic1
+        assert_includes Statistic.match_stats(match), statistic2
       end
     end
 
@@ -45,7 +54,8 @@ RSpec.describe(Statistic, type: :model) do
         match = create(:match)
         player = create(:player, team: match.home_team)
         statistic = create(:statistic, match: match, player: player)
-        expect(Statistic.player_stats(player)).to(eq([statistic]))
+
+        assert_equal [statistic], Statistic.player_stats(player)
       end
     end
   end

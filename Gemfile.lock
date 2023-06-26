@@ -244,12 +244,12 @@ DEPENDENCIES
   factory_bot_rails
   importmap-rails
   jbuilder
-  minitest (~> 5.18.1)
+  minitest
   pry-byebug
   puma (~> 5.0)
-  racc (~> 1.7.1)
+  racc
   rails (~> 7.0.5)
-  rake (~> 13.0.6)
+  rake
   rspec-rails
   rubocop
   sprockets-rails

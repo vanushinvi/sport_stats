@@ -26,11 +26,12 @@ describe Player, type: :model do
     player1 = create(:player, team: team)
     player2 = create(:player, team: team)
     match = create(:match, home_team: team)
-    create(:statistic, match: match, player: player1, goals: 10)
+    create(:statistic, match: match, player: player1, goals: 1)
     create(:statistic, match: match, player: player2, goals: 8)
 
     top_players = Player.top_players_by_performance_in_all_teams('goals')
-    expect(top_players).to(include(player1, player2))
+    expected_result = [player2, player1]
+    assert_equal expected_result, top_players
   end
 
   example '#above_performance_threshold_in_match? - returns true if player meets the performance threshold in the match' do

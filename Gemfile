@@ -55,9 +55,9 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'factory_bot_rails'
   gem 'rubocop'
-  gem 'minitest', '~> 5.18.1'
-  gem 'racc', '~> 1.7.1'
-  gem 'rake', '~> 13.0.6'
+  gem 'minitest'
+  gem 'racc'
+  gem 'rake'
 end
 
 group :development do
